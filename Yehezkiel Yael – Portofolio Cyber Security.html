@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="id" data-theme="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Yehezkiel Yael – Portofolio Cyber Security</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px);
+  padding-bottom:env(safe-area-inset-bottom,0px);
+  --bg:#E9EEF0; --surface:#F7F9FA; --ink:#0B1F26; --muted:#4A5E66; --line:#C3D0D4;
+  --accent:#B25400; --accent-ink:#fff;
+  --t-bg:#071419; --t-ink:#D4E2E5; --t-dim:#7F979D; --amber:#FFB000; --cyan:#5FD4E0;
+  --display:"Chakra Petch","Arial Narrow",Arial,sans-serif;
+  --body:"IBM Plex Sans",system-ui,-apple-system,"Segoe UI",Arial,sans-serif;
+  --mono:"IBM Plex Mono",ui-monospace,Menlo,Consolas,monospace;
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){--bg:#0A1519;--surface:#10222A;--ink:#E3EEF0;--muted:#8FA6AD;--line:#1F3640;--accent:#FFB000;--accent-ink:#0A1519}
+}
+:root[data-theme="dark"]{--bg:#0A1519;--surface:#10222A;--ink:#E3EEF0;--muted:#8FA6AD;--line:#1F3640;--accent:#FFB000;--accent-ink:#0A1519}
+*,*::before,*::after{box-sizing:inherit}
+html{scroll-padding-top:env(safe-area-inset-top,0px);scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 1.0625rem/1.65 var(--body);-webkit-font-smoothing:antialiased}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--cyan);outline-offset:3px;border-radius:4px}
+.wrap{max-width:70rem;margin:0 auto;padding:0 1.5rem}
+h1,h2,h3{font-family:var(--display);margin:0;line-height:1.05;letter-spacing:-.01em}
+
+header{display:flex;justify-content:space-between;align-items:center;gap:1rem;flex-wrap:wrap;padding:1.25rem 0}
+.brand{font:700 1.2rem var(--display);text-decoration:none}
+nav{display:flex;gap:1.5rem;flex-wrap:wrap;align-items:center}
+nav a{text-decoration:none;color:var(--muted);font-weight:500}
+nav a:hover{color:var(--ink);text-decoration:underline;text-underline-offset:6px;text-decoration-thickness:2px}
+.pill{background:none;border:1px solid var(--line);color:var(--ink);border-radius:999px;padding:.3rem .9rem;font:500 .9rem var(--body);cursor:pointer}
+.pill:hover{border-color:var(--accent)}
+
+.hero{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.25fr);gap:2.5rem;align-items:center;padding:clamp(2rem,6vw,4.5rem) 0}
+.hero h1{font-size:clamp(2.8rem,8vw,5.6rem);font-weight:700;letter-spacing:-.03em}
+.hero .role{font:500 1.25rem/1.4 var(--display);color:var(--accent);margin:1.25rem 0 .75rem}
+.hero p{color:var(--muted);max-width:30rem;margin:0}
+.status{display:inline-flex;align-items:center;gap:.5rem;margin-top:1.5rem;font:400 .9rem var(--mono);color:var(--muted)}
+.status::before{content:"";width:.6rem;height:.6rem;border-radius:50%;background:#2FBF71;box-shadow:0 0 0 0 #2FBF7188;animation:ping 2s infinite}
+@keyframes ping{70%{box-shadow:0 0 0 .6rem #2FBF7100}100%{box-shadow:0 0 0 0 #2FBF7100}}
+
+/* Terminal */
+.term{background:var(--t-bg);color:var(--t-ink);border-radius:14px;border:1px solid #1B3640;overflow:hidden;box-shadow:0 20px 50px -20px #000a;font:400 .92rem/1.55 var(--mono)}
+.bar{display:flex;align-items:center;gap:.4rem;padding:.6rem .9rem;background:#0D222A;color:var(--t-dim);font-size:.8rem}
+.bar i{width:.7rem;height:.7rem;border-radius:50%;background:#2A4650}
+.bar span{margin-left:.5rem}
+.out{height:21rem;overflow-y:auto;padding:1rem;cursor:text}
+.out div{white-space:pre-wrap;word-break:break-word;min-height:1.55em}
+.out .cmd{color:var(--amber)}
+.out .k{color:var(--cyan)}
+.out .d{color:var(--t-dim)}
+.row{display:flex;gap:.6rem;align-items:center;padding:.7rem 1rem;border-top:1px solid #1B3640}
+.row b{color:var(--amber);font-weight:500;white-space:nowrap}
+.row input{flex:1;min-width:0;background:none;border:0;color:var(--t-ink);font:inherit;caret-color:var(--amber)}
+.row input:focus-visible{outline:none}
+.row:focus-within{box-shadow:inset 0 0 0 2px #FFB00055}
+.chips{display:flex;gap:.4rem;flex-wrap:wrap;padding:0 1rem 1rem}
+.chips button{background:#0D222A;border:1px solid #234552;color:var(--t-ink);border-radius:6px;padding:.2rem .6rem;font:inherit;font-size:.82rem;cursor:pointer}
+.chips button:hover{border-color:var(--amber);color:var(--amber)}
+
+section{padding:clamp(3rem,7vw,5rem) 0;border-top:1px solid var(--line)}
+h2{font-size:clamp(1.9rem,4.5vw,3rem);margin-bottom:1.5rem}
+
+/* Filter + proyek */
+.filters{display:flex;gap:.5rem;flex-wrap:wrap;margin-bottom:2rem}
+.filters button{background:var(--surface);border:1px solid var(--line);color:var(--ink);border-radius:999px;padding:.4rem 1rem;font:500 .95rem var(--body);cursor:pointer}
+.filters button[aria-pressed="true"]{background:var(--accent);border-color:var(--accent);color:var(--accent-ink)}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(19rem,1fr));gap:1.25rem}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:1.4rem;display:flex;flex-direction:column;gap:.7rem;border-left:4px solid var(--accent)}
+.card h3{font-size:1.3rem}
+.card p{margin:0;color:var(--muted);font-size:1rem}
+.card .meta{margin-top:auto;display:flex;justify-content:space-between;gap:1rem;align-items:center;font:400 .85rem var(--mono);color:var(--muted)}
+.card a{color:var(--ink);font-weight:600;text-underline-offset:4px}
+.empty{color:var(--muted)}
+
+/* Keahlian */
+.skills{display:grid;grid-template-columns:repeat(auto-fit,minmax(16rem,1fr));gap:1.25rem}
+.sk{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:1.4rem}
+.sk h3{font-size:1.15rem;margin-bottom:1rem}
+.meter{margin:0 0 .9rem}
+.meter label{display:flex;justify-content:space-between;font-size:.95rem;margin-bottom:.3rem}
+.meter .track{height:.5rem;border-radius:99px;background:var(--line);overflow:hidden}
+.meter .fill{height:100%;width:0;background:var(--accent);border-radius:99px;transition:width .9s cubic-bezier(.2,.7,.2,1)}
+.certs{list-style:none;margin:0;padding:0;display:grid;gap:.6rem}
+.certs li{display:flex;justify-content:space-between;gap:1rem;border-bottom:1px dashed var(--line);padding-bottom:.5rem;font-size:.98rem}
+.certs span{color:var(--muted);font:400 .85rem var(--mono);white-space:nowrap}
+
+/* Kontak */
+.mail{display:inline-block;font:700 clamp(1.5rem,5.5vw,3.4rem)/1.1 var(--display);word-break:break-word;text-decoration-color:var(--accent);text-decoration-thickness:4px;text-underline-offset:10px}
+.mail:hover{color:var(--accent)}
+.contact-row{display:flex;gap:.75rem;flex-wrap:wrap;margin:1.5rem 0}
+.btn{display:inline-block;padding:.7rem 1.3rem;border-radius:10px;font:600 1rem var(--body);text-decoration:none;border:2px solid var(--ink);background:none;color:var(--ink);cursor:pointer}
+.btn.primary{background:var(--accent);border-color:var(--accent);color:var(--accent-ink)}
+.pgp{font:400 .85rem var(--mono);color:var(--muted);word-break:break-all}
+footer{padding:2rem 0 3rem;border-top:1px solid var(--line);color:var(--muted);font-size:.9rem}
+
+@media (max-width:820px){.hero{grid-template-columns:1fr}.out{height:17rem}}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.status::before{animation:none}.meter .fill{transition:none}}
+:root{--cy:#007C8C;--vi:#6B3FD4;--glow:#6B3FD42E;--net:#0B1F26}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--cy:#5FD4E0;--vi:#8B6CFF;--glow:#8B6CFF40;--net:#9FE8F0}}
+:root[data-theme="dark"]{--cy:#5FD4E0;--vi:#8B6CFF;--glow:#8B6CFF40;--net:#9FE8F0}
+#bg{position:fixed;inset:0;width:100%;height:100%;z-index:-1;pointer-events:none}
+body{background:radial-gradient(60rem 40rem at 85% -10%,var(--glow),transparent 60%),radial-gradient(50rem 35rem at -10% 35%,#FFB00018,transparent 60%),var(--bg);background-attachment:fixed}
+body::before{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);background-size:56px 56px;opacity:.4;-webkit-mask-image:radial-gradient(ellipse at 50% 15%,#000,transparent 75%);mask-image:radial-gradient(ellipse at 50% 15%,#000,transparent 75%)}
+.hero h1{background:linear-gradient(90deg,var(--ink) 30%,var(--cy));-webkit-background-clip:text;background-clip:text;color:transparent}
+.avatar{width:5.75rem;height:5.75rem;margin-bottom:1.25rem;clip-path:polygon(50% 0,93% 25%,93% 75%,50% 100%,7% 75%,7% 25%);background:linear-gradient(135deg,var(--accent),var(--vi));display:grid;place-items:center;font:700 1.7rem var(--display);color:#fff}
+.avatar img{width:100%;height:100%;object-fit:cover}
+.term{border-color:#2B4A57;box-shadow:0 30px 70px -25px var(--vi),0 0 40px -12px #FFB00040}
+.card,.sk{background:color-mix(in srgb,var(--surface) 80%,transparent);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px)}
+.card{border-left-color:var(--cy)}
+.banner{height:7.5rem;border-radius:8px;background:linear-gradient(135deg,var(--b1),var(--b2));display:grid;place-items:center;position:relative;overflow:hidden}
+.banner::after{content:"";position:absolute;inset:0;background-image:radial-gradient(#fff4 1px,transparent 1.5px);background-size:14px 14px}
+.banner svg{position:relative;z-index:1;filter:drop-shadow(0 2px 6px #0006)}
+.b-ctf{--b1:#D97800;--b2:#6B3FD4}.b-web{--b1:#0A8FA3;--b2:#4B3FD4}.b-blue{--b1:#0A8FA3;--b2:#1F9D63}.b-net{--b1:#6B3FD4;--b2:#0A8FA3}.b-for{--b1:#D97800;--b2:#C23B3B}
+.meter .fill{background:linear-gradient(90deg,var(--accent),var(--vi))}
+.mail:hover{color:var(--cy)}
+header{justify-content:flex-end}
+#detail{padding:clamp(2rem,6vw,4rem) 0}
+#detail .back{display:inline-block;margin-bottom:1.5rem;color:var(--muted);text-underline-offset:5px}
+#detail .banner{height:10rem;margin-bottom:1.5rem}
+#detail .dmeta{font:400 .9rem var(--mono);color:var(--muted);margin:0}
+#detail h1{font-size:clamp(2rem,6vw,3.6rem);margin:.4rem 0 1rem}
+#detail .lead{color:var(--muted);font-size:1.15rem;max-width:42rem;margin:0}
+#detail h2{font-size:1.5rem;margin:2.2rem 0 .8rem}
+#detail p,#detail ol{max-width:44rem}
+#detail ol{padding-left:1.3rem;margin:0}#detail li{margin-bottom:.55rem}
+.dtags{display:flex;gap:.5rem;flex-wrap:wrap;padding:0;margin:0;list-style:none}
+.dtags li{border:1px solid var(--line);background:var(--surface);border-radius:999px;padding:.15rem .85rem;font:400 .85rem var(--mono);color:var(--muted)}
+.dnav{display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap;margin-top:3rem;padding-top:1.5rem;border-top:1px solid var(--line)}
+.dnav a{max-width:22rem;text-underline-offset:5px}
+</style>
+</head>
+<body>
+<canvas id="bg" aria-hidden="true"></canvas>
+<div class="wrap">
+  <header>
+    <nav aria-label="Navigasi utama">
+      <a href="#proyek">Proyek</a><a href="#keahlian">Keahlian</a><a href="#kontak">Kontak</a>
+      <button class="pill" id="theme" type="button">Ganti tema</button>
+    </nav>
+  </header>
+
+  <main id="atas">
+    <div class="hero">
+      <div>
+        <!-- GANTI: nama, peran, dan deskripsi -->
+        <div class="avatar" id="avatar" role="img" aria-label="Foto profil"></div>
+        <h1>Yehezkiel Yael</h1>
+        <p class="role">Mahasiswa Cyber Security</p>
+        <p>Saya belajar mencari celah supaya bisa menutupnya. Fokus saya di keamanan web, analisis log, dan kompetisi CTF.</p>
+        <div class="status">Terbuka untuk magang dan kolaborasi</div>
+      </div>
+      <div class="term" aria-label="Terminal interaktif">
+        <div class="bar"><i></i><i></i><i></i><span>yehezkiel@portofolio: ~</span></div>
+        <div class="out" id="out" aria-live="polite"></div>
+        <div class="chips" id="chips"></div>
+        <form class="row" id="form" autocomplete="off">
+          <b>$</b><input id="in" type="text" aria-label="Ketik perintah, misalnya help" spellcheck="false" autocapitalize="off" autocomplete="off">
+        </form>
+      </div>
+    </div>
+
+    <section id="proyek">
+      <h2>Proyek dan write-up</h2>
+      <div class="filters" id="filters" role="group" aria-label="Filter proyek"></div>
+      <div class="grid" id="grid"></div>
+    </section>
+
+    <section id="keahlian">
+      <h2>Keahlian dan sertifikasi</h2>
+      <div class="skills">
+        <div class="sk"><h3>Kemampuan teknis</h3><div id="meters"></div></div>
+        <div class="sk"><h3>Sertifikasi dan prestasi</h3><ul class="certs" id="certs"></ul></div>
+      </div>
+    </section>
+
+    <section id="kontak">
+      <h2>Hubungi saya</h2>
+      <a class="mail" id="mail" href="#"></a>
+      <div class="contact-row">
+        <button class="btn primary" id="copy" type="button">Salin email</button>
+        <a class="btn" id="cv" href="#">Unduh CV (PDF)</a>
+        <a class="btn" id="gh" href="#">GitHub</a>
+        <a class="btn" id="li" href="#">LinkedIn</a>
+      </div>
+      <div class="pgp" id="pgp"></div>
+    </section>
+  </main>
+  <article id="detail" hidden></article>
+  <footer>© 2026 Yehezkiel Yael. Semua proyek di sini dikerjakan di lingkungan lab milik sendiri atau dengan izin.</footer>
+</div>
+
+<script>
+/* ===== GANTI DATA DI BAWAH INI, HALAMAN AKAN MENYESUAIKAN ===== */
+var D={
+  name:"Yehezkiel Yael", role:"Lulusan Cyber Security, BINUS University",
+  bio:"Saya membantu orang dan bisnis kecil merasa tenang di dunia digital: mencegah, mendeteksi, dan menangani serangan siber, mulai dari virus, phishing, sampai pencurian akun.",
+  status:"Sedang mencari kolaborasi", photo:"",
+  campus:"BINUS University, Cyber Security (lulus)",
+  email:"yehezkielyael30@gmail.com", cv:"#", github:"#", linkedin:"#",
+  pgp:"",
+  skills:[["Pencegahan dan penanganan malware",85],["Edukasi keamanan untuk pengguna",85],["Keamanan aplikasi web (OWASP Top 10)",80],["Analisis log dan SIEM",80],["Keamanan jaringan dan firewall",75]],
+  certs:[["Sarjana Cyber Security, BINUS University","Lulus"],["CompTIA Security+ (sedang dipersiapkan)","Target"]],
+  projects:[
+    {"id": "simulasi-phishing", "t": "Simulasi phishing dan pelatihan karyawan", "d": "Kampanye phishing terkontrol untuk mengukur kewaspadaan tim, disertai materi edukasi dan panduan melapor email mencurigakan.", "c": "blue", "y": "2025", "latar": "Phishing masih menjadi pintu masuk serangan paling umum karena menyasar manusia, bukan sistem. Proyek ini melatih kewaspadaan tim lewat simulasi yang aman dan terkontrol.", "langkah": ["Menentukan skenario yang umum, misalnya email tagihan palsu atau notifikasi kata sandi kedaluwarsa.", "Menyiapkan email simulasi di lingkungan uji dengan izin tertulis dari pihak yang dilatih.", "Mencatat siapa yang membuka, mengeklik, atau melaporkan email, tanpa menyimpan data pribadi.", "Memberi umpan balik langsung berupa halaman edukasi tentang tanda-tanda email palsu."], "hasil": "Peserta terbiasa memeriksa pengirim dan tautan sebelum mengeklik, dan tahu cara melapor ke tim. Laporan akhir berisi rekomendasi pelatihan lanjutan.", "alat": ["GoPhish", "Python", "Google Workspace", "Materi presentasi"], "belajar": "Edukasi yang ramah jauh lebih efektif daripada menyalahkan orang yang terjebak.", "l": "#"},
+    {"id": "lab-malware", "t": "Lab analisis malware di sandbox terisolasi", "d": "Menganalisis perilaku sampel malware di mesin virtual tanpa akses internet, lalu menyusun indikator kompromi dan langkah pembersihannya.", "c": "for", "y": "2025", "latar": "Memahami cara kerja malware membantu menyusun pertahanan yang tepat. Semua analisis dilakukan di mesin virtual yang terisolasi dan tidak terhubung ke internet.", "langkah": ["Menyiapkan VM Windows dan Linux dengan snapshot, jaringan host-only, dan tanpa berbagi folder.", "Memakai sampel dari repositori yang sah untuk riset, lalu mengamati perilakunya.", "Mencatat perubahan pada file, registri, proses, dan koneksi jaringan.", "Menyusun indikator kompromi (IOC) dan langkah pembersihan yang bisa diikuti pengguna awam."], "hasil": "Dokumen analisis berisi ringkasan perilaku, IOC, dan panduan pembersihan bertahap. Prosedur isolasi lab juga dibukukan agar aman diulang.", "alat": ["VirtualBox", "Wireshark", "Process Monitor", "YARA"], "belajar": "Disiplin isolasi dan snapshot sama pentingnya dengan kemampuan analisisnya.", "l": "#"},
+    {"id": "pemantauan-wazuh", "t": "Pemantauan keamanan server dengan Wazuh", "d": "Deteksi login mencurigakan dan perubahan file penting, dengan peringatan otomatis ke email.", "c": "blue", "y": "2024", "latar": "Banyak serangan baru terlihat setelah terlambat karena tidak ada yang memantau log. Proyek ini memasang pemantauan dasar pada sebuah server uji.", "langkah": ["Memasang Wazuh manager dan agen pada server Linux uji.", "Mengaktifkan pemantauan integritas file untuk direktori penting dan log autentikasi SSH.", "Membuat aturan peringatan untuk percobaan login gagal berulang.", "Mengirim peringatan ke email dan menyusun dasbor ringkas untuk dipantau setiap hari."], "hasil": "Percobaan login mencurigakan terdeteksi dan diberi peringatan otomatis, dengan dasbor yang mudah dibaca bahkan oleh orang non-teknis.", "alat": ["Wazuh", "Ubuntu Server", "SSH", "Wazuh Dashboard"], "belajar": "Terlalu banyak peringatan sama buruknya dengan tidak ada peringatan, jadi aturan perlu terus disetel.", "l": "#"},
+    {"id": "audit-owasp", "t": "Audit keamanan aplikasi web sesuai OWASP Top 10", "d": "Menguji situs lokal, mendokumentasikan temuan, dan menulis rekomendasi perbaikan yang mudah dipahami.", "c": "web", "y": "2024", "latar": "Aplikasi web sering menjadi sasaran karena terbuka untuk umum. Proyek ini menguji aplikasi di lingkungan lokal dengan acuan OWASP Top 10.", "langkah": ["Menentukan ruang lingkup dan menjalankan aplikasi uji di komputer sendiri.", "Memeriksa kategori utama seperti kontrol akses, injeksi, dan konfigurasi keamanan yang salah.", "Mendokumentasikan tiap temuan beserta tingkat risikonya.", "Menulis rekomendasi perbaikan lengkap dengan contoh kode yang aman."], "hasil": "Laporan temuan yang bisa dipahami pengembang, lengkap dengan urutan prioritas perbaikan.", "alat": ["OWASP ZAP", "Burp Suite Community", "DVWA", "Python"], "belajar": "Laporan yang baik tidak hanya menunjukkan celah, tetapi juga cara menutupnya.", "l": "#"},
+    {"id": "segmentasi-jaringan", "t": "Segmentasi jaringan dan firewall untuk kantor kecil", "d": "Rancangan jaringan yang memisahkan perangkat tamu, karyawan, dan server agar serangan tidak menyebar.", "c": "net", "y": "2024", "latar": "Jika satu perangkat terinfeksi, jaringan yang datar membuat serangan mudah menyebar. Segmentasi membatasi dampaknya.", "langkah": ["Memetakan perangkat dan kebutuhan aksesnya: karyawan, tamu, printer, dan server.", "Merancang VLAN terpisah untuk tiap kelompok.", "Menyusun aturan firewall dengan prinsip akses minimum.", "Menguji di simulator bahwa perangkat tamu tidak bisa menjangkau server."], "hasil": "Rancangan jaringan beserta diagram dan tabel aturan firewall yang bisa langsung diterapkan di kantor kecil.", "alat": ["Cisco Packet Tracer", "pfSense", "VLAN", "Diagram jaringan"], "belajar": "Rancangan yang paling aman biasanya yang paling sederhana dan terdokumentasi.", "l": "#"},
+    {"id": "writeup-ctf", "t": "Write-up CTF: menemukan dan menambal celah injeksi", "d": "Catatan langkah demi langkah dari soal latihan, ditutup dengan cara memperbaiki kodenya.", "c": "ctf", "y": "2024", "latar": "CTF adalah cara berlatih yang aman untuk memahami celah umum. Catatan ini membahas satu soal injeksi pada aplikasi latihan.", "langkah": ["Mengenali gejalanya: masukan pengguna dipakai langsung di dalam kueri basis data.", "Menjelaskan mengapa menyusun kueri dengan menggabungkan teks itu berbahaya.", "Menunjukkan perbaikannya dengan prepared statement dan validasi masukan.", "Menambahkan daftar periksa singkat untuk mencegah celah serupa."], "hasil": "Catatan yang lebih menekankan pencegahan daripada cara menyerang, sehingga berguna bagi pengembang pemula.", "alat": ["Burp Suite", "SQLite", "Python", "Platform latihan CTF"], "belajar": "Memahami sisi penyerang membuat perbaikan jadi lebih tepat sasaran.", "l": "#"}
+  ],
+  cats:{all:"Semua",ctf:"CTF",web:"Keamanan web",blue:"Blue team",net:"Jaringan",for:"Forensik"}
+};
+/* ===== SELESAI ===== */
+
+var $=function(i){return document.getElementById(i)};
+function el(tag,cls,txt){var e=document.createElement(tag);if(cls)e.className=cls;if(txt!=null)e.textContent=txt;return e}
+
+/* Proyek + filter */
+var active="all";
+function drawProjects(){
+  var g=$("grid");g.textContent="";
+  var list=D.projects.filter(function(p){return active==="all"||p.c===active});
+  if(!list.length){g.appendChild(el("p","empty","Belum ada proyek di kategori ini."));return}
+  list.forEach(function(p){
+    var c=el("article","card");c.appendChild(banner(p.c));
+    c.appendChild(el("h3",null,p.t));c.appendChild(el("p",null,p.d));
+    var m=el("div","meta");m.appendChild(el("span",null,D.cats[p.c]+" · "+p.y));
+    var a=el("a",null,"Baca selengkapnya");a.href="#"+p.id;m.appendChild(a);c.appendChild(m);g.appendChild(c);
+  });
+}
+var F=$("filters");
+Object.keys(D.cats).forEach(function(k){
+  var b=el("button",null,D.cats[k]);b.type="button";b.setAttribute("aria-pressed",k==="all");
+  b.onclick=function(){active=k;[].forEach.call(F.children,function(x){x.setAttribute("aria-pressed",x===b)});drawProjects()};
+  F.appendChild(b);
+});
+drawProjects();
+
+/* Keahlian */
+D.skills.forEach(function(s){
+  var m=el("div","meter"),l=el("label");l.appendChild(el("span",null,s[0]));l.appendChild(el("span",null,s[1]+"%"));
+  var t=el("div","track"),f=el("div","fill");f.dataset.w=s[1];t.appendChild(f);m.appendChild(l);m.appendChild(t);$("meters").appendChild(m);
+});
+D.certs.forEach(function(c){var li=el("li");li.appendChild(el("div",null,c[0]));li.appendChild(el("span",null,c[1]));$("certs").appendChild(li)});
+var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){[].forEach.call(document.querySelectorAll(".fill"),function(f){f.style.width=f.dataset.w+"%"});io.disconnect()}})},{threshold:.3});
+io.observe($("keahlian"));
+
+/* Kontak */
+$("mail").textContent=D.email;$("mail").href="mailto:"+D.email;
+$("cv").href=D.cv;$("gh").href=D.github;$("li").href=D.linkedin;$("pgp").textContent=D.pgp;
+$("copy").onclick=function(){
+  var b=$("copy");
+  function ok(){b.textContent="Tersalin";setTimeout(function(){b.textContent="Salin email"},1800)}
+  try{navigator.clipboard.writeText(D.email).then(ok,function(){b.textContent="Salin manual ya"})}catch(e){b.textContent="Salin manual ya"}
+};
+
+/* Tema */
+var dark=true;
+$("theme").onclick=function(){dark=!dark;document.documentElement.setAttribute("data-theme",dark?"dark":"light")};
+
+/* Terminal */
+var out=$("out"),inp=$("in"),hist=[],hi=0;
+function line(txt,cls){var d=el("div",cls,txt);out.appendChild(d);out.scrollTop=out.scrollHeight}
+var C={
+  help:function(){["Perintah yang tersedia:"].concat(Object.keys(C).map(function(k){return "  "+k+" - "+C[k].h})).forEach(function(t,i){line(t,i?null:"k")})},
+  whoami:function(){line(D.name,"k");line(D.campus)},
+  skills:function(){D.skills.forEach(function(s){line("• "+s[0]+" ("+s[1]+"%)")})},
+  projects:function(){D.projects.forEach(function(p,i){line((i+1)+". "+p.t+" ("+p.y+")")});line("Gulir ke bagian Proyek untuk membuka tautannya.","d")},
+  certs:function(){D.certs.forEach(function(c){line(c[1]+"  "+c[0])})},
+  contact:function(){line("Email   : "+D.email);line("Bagian kontak ada di bawah halaman.","d")},
+  theme:function(){$("theme").click();line("Tema diganti.","d")},
+  clear:function(){out.textContent=""},
+  sudo:function(){line("Nice try. Akses ditolak.","d")}
+};
+C.help.h="daftar perintah";C.whoami.h="siapa saya";C.skills.h="keahlian teknis";C.projects.h="daftar proyek";C.certs.h="sertifikasi dan prestasi";C.contact.h="cara menghubungi saya";C.theme.h="ganti tema";C.clear.h="bersihkan layar";
+function run(raw){
+  var c=raw.trim();if(!c)return;
+  line("$ "+c,"cmd");hist.push(c);hi=hist.length;
+  var key=c.toLowerCase().split(/\s+/)[0];
+  if(key==="sudo"){C.sudo();return}
+  if(Object.prototype.hasOwnProperty.call(C,key)&&key!=="sudo")C[key]();
+  else line("perintah tidak dikenal: "+key+". Ketik help untuk daftar perintah.","d");
+}
+$("form").onsubmit=function(e){e.preventDefault();run(inp.value);inp.value=""};
+inp.onkeydown=function(e){
+  if(e.key==="ArrowUp"&&hist.length){e.preventDefault();hi=Math.max(0,hi-1);inp.value=hist[hi]}
+  else if(e.key==="ArrowDown"){e.preventDefault();hi=Math.min(hist.length,hi+1);inp.value=hist[hi]||""}
+};
+out.onclick=function(){inp.focus()};
+["help","whoami","skills","projects","certs","contact","clear"].forEach(function(k){
+  var b=el("button",null,k==="clear"?"hapus teks":k);b.type="button";b.onclick=function(){run(k)};$("chips").appendChild(b);
+});
+line("Selamat datang. Ketik help atau klik salah satu perintah di bawah.","d");
+run("whoami");
+
+/* Isi hero dari data */
+function ini(){return D.name.split(/\s+/).map(function(w){return w.charAt(0)}).slice(0,2).join("").toUpperCase()}
+document.title=D.name+" – Portofolio Cyber Security";
+document.querySelector("h1").textContent=D.name;
+document.querySelector(".role").textContent=D.role;
+document.querySelector(".hero p:not(.role)").textContent=D.bio;
+document.querySelector(".status").textContent=D.status;
+document.querySelector("footer").textContent="© 2026 "+D.name+". Semua proyek di sini dikerjakan di lingkungan lab milik sendiri atau dengan izin.";
+(function(){var a=$("avatar");if(D.photo){var im=document.createElement("img");im.src=D.photo;im.alt="";a.appendChild(im)}else a.remove()})();
+
+/* Banner ikon per kategori */
+function banner(k){
+  var I={ctf:'<path d="M5 21V4m0 0h11l-2 4 2 4H5"/>',web:'<rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/>',blue:'<path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6z"/>',net:'<circle cx="6" cy="6" r="2"/><circle cx="18" cy="8" r="2"/><circle cx="9" cy="18" r="2"/><path d="M7.5 7.5l9 .5M7 8l2 8M17 10l-6 7"/>',for:'<circle cx="10" cy="10" r="6"/><path d="M15 15l6 6"/>'};
+  var b=el("div","banner b-"+k);
+  b.innerHTML='<svg viewBox="0 0 24 24" width="56" height="56" fill="none" stroke="#fff" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">'+(I[k]||"")+'</svg>';
+  return b;
+}
+
+/* Halaman detail proyek (routing lewat hash) */
+var inDetail=false;
+function route(){
+  var h=location.hash.slice(1),i=-1,main=document.querySelector("main"),dt=$("detail");
+  D.projects.forEach(function(p,k){if(p.id===h)i=k});
+  if(i<0){
+    main.hidden=false;dt.hidden=true;dt.textContent="";
+    document.title=D.name+" \u2013 Portofolio Cyber Security";
+    var t=h?$(h):null;
+    if(t)t.scrollIntoView();else if(inDetail)window.scrollTo(0,0);
+    inDetail=false;return;
+  }
+  var p=D.projects[i];inDetail=true;main.hidden=true;dt.hidden=false;dt.textContent="";
+  document.title=p.t+" \u2013 "+D.name;
+  var back=el("a","back","\u2190 Kembali ke proyek");back.href="#proyek";dt.appendChild(back);
+  dt.appendChild(banner(p.c));
+  dt.appendChild(el("p","dmeta",D.cats[p.c]+" \u00b7 "+p.y));
+  dt.appendChild(el("h1",null,p.t));dt.appendChild(el("p","lead",p.d));
+  function sec(h2,node){dt.appendChild(el("h2",null,h2));dt.appendChild(node)}
+  sec("Latar belakang",el("p",null,p.latar));
+  var ol=el("ol");p.langkah.forEach(function(x){ol.appendChild(el("li",null,x))});sec("Yang saya kerjakan",ol);
+  sec("Hasil",el("p",null,p.hasil));
+  var ul=el("ul","dtags");p.alat.forEach(function(x){ul.appendChild(el("li",null,x))});sec("Alat yang dipakai",ul);
+  sec("Yang saya pelajari",el("p",null,p.belajar));
+  if(p.l&&p.l!=="#"){var r=el("a","btn primary","Lihat kode di GitHub");r.href=p.l;r.style.marginTop="1.5rem";dt.appendChild(r)}
+  var nv=el("div","dnav"),pr=D.projects[i-1],nx=D.projects[i+1];
+  if(pr){var a1=el("a",null,"\u2190 "+pr.t);a1.href="#"+pr.id;nv.appendChild(a1)}else nv.appendChild(el("span"));
+  if(nx){var a2=el("a",null,nx.t+" \u2192");a2.href="#"+nx.id;nv.appendChild(a2)}
+  dt.appendChild(nv);window.scrollTo(0,0);
+}
+window.addEventListener("hashchange",route);route();
+
+/* Latar jaringan interaktif */
+(function(){
+  var cv=$("bg"),x=cv.getContext("2d"),W,H,P=[],m={x:-999,y:-999},n0=0,c1="#9FE8F0",c2="#FFB000";
+  var rm=window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  function colors(){var s=getComputedStyle(document.documentElement);c1=s.getPropertyValue("--net").trim()||c1;c2=s.getPropertyValue("--accent").trim()||c2}
+  function size(){
+    var r=window.devicePixelRatio||1;W=innerWidth;H=innerHeight;cv.width=W*r;cv.height=H*r;x.setTransform(r,0,0,r,0,0);
+    var n=Math.min(80,Math.floor(W*H/20000));P=[];
+    for(var i=0;i<n;i++)P.push({x:Math.random()*W,y:Math.random()*H,vx:(Math.random()-.5)*.35,vy:(Math.random()-.5)*.35});
+    draw();
+  }
+  function draw(){
+    if(n0++%40===0)colors();
+    x.clearRect(0,0,W,H);
+    for(var i=0;i<P.length;i++){
+      var p=P[i];
+      if(!rm){p.x+=p.vx;p.y+=p.vy;if(p.x<0||p.x>W)p.vx*=-1;if(p.y<0||p.y>H)p.vy*=-1}
+      x.fillStyle=c1;x.strokeStyle=c1;x.globalAlpha=.55;x.beginPath();x.arc(p.x,p.y,1.7,0,6.283);x.fill();
+      for(var j=i+1;j<P.length;j++){
+        var q=P[j],d=Math.hypot(p.x-q.x,p.y-q.y);
+        if(d<135){x.globalAlpha=(1-d/135)*.3;x.beginPath();x.moveTo(p.x,p.y);x.lineTo(q.x,q.y);x.stroke()}
+      }
+      var dm=Math.hypot(p.x-m.x,p.y-m.y);
+      if(dm<170){x.strokeStyle=c2;x.globalAlpha=(1-dm/170)*.7;x.beginPath();x.moveTo(p.x,p.y);x.lineTo(m.x,m.y);x.stroke()}
+    }
+    x.globalAlpha=1;
+    if(!rm)requestAnimationFrame(draw);
+  }
+  window.addEventListener("pointermove",function(e){m.x=e.clientX;m.y=e.clientY});
+  window.addEventListener("pointerleave",function(){m.x=m.y=-999});
+  window.addEventListener("resize",function(){if(rm)size()});
+  var t;window.addEventListener("resize",function(){if(rm)return;clearTimeout(t);t=setTimeout(function(){W=innerWidth;H=innerHeight;var r=window.devicePixelRatio||1;cv.width=W*r;cv.height=H*r;x.setTransform(r,0,0,r,0,0)},150)});
+  size();
+})();
+</script>
+</body>
+</html>
